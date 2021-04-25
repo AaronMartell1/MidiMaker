@@ -6,13 +6,188 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
 
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-        #{mainBean.name}
-    </body>
+    
+    <title>MidiMaker</title>
+    <h:head>
+        <p:tabView>
+            <p:tab title="Piano">
+                <h:panelGrid columns="16">
+                    <p:outputPanel id="customPanel">
+                        <p:selectManyCheckbox id="qn1" layout="custom"> <!--dont forget value attribute - must be a collection/array-->
+                            <f:selectItem itemLabel="C" itemValue="nothingYet"/>
+                            <f:selectItem itemLabel="C#" itemValue="Will be note values to send to EventMaker"/>
+                            <f:selectItem itemLabel="D" itemValue="See above"/>
+                            <f:selectItem itemLabel="D#" itemValue=""/>
+                            <f:selectItem itemLabel="E" itemValue="5"/>
+                            <f:selectItem itemLabel="F" itemValue=""/>
+                            <f:selectItem itemLabel="F#" itemValue=""/>
+                            <f:selectItem itemLabel="G" itemValue=""/>
+                            <f:selectItem itemLabel="G#" itemValue=""/>
+                            <f:selectItem itemLabel="A" itemValue=""/>
+                            <f:selectItem itemLabel="A#" itemValue=""/>
+                            <f:selectItem itemLabel="B" itemValue=""/>
+                            <f:selectItem itemLabel="HiC" itemValue=""/>
+                        </p:selectManyCheckbox>
+
+                        <div class="p-grid p-text-center">
+                            <div class="p-col">
+                                <p:outputLabel for="cBox" value="C"/>
+                                <p:checkbox id="cBox" for="qn1" itemIndex="0"/>
+   <!--tooltip later            <p:tooltip for="cBox" value="C" position="right"/>  -->
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="csharpBox" value="C#"/>
+                                <p:checkbox id="csharpBox" for="qn1" itemIndex="1"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="dBox" value="D"/>
+                                <p:checkbox id="dBox" for="qn1" itemIndex="2"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="dsharpBox" value="D#"/>
+                                <p:checkbox id="dsharpBox" for="qn1" itemIndex="3"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="eBox" value="E"/>
+                                <p:checkbox id="eBox" for="qn1" itemIndex="4"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="fBox" value="F"/>
+                                <p:checkbox id="fBox" for="qn1" itemIndex="5"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="fsharpBox" value="F#"/>
+                                <p:checkbox id="fsharpBox" for="qn1" itemIndex="6"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="gBox" value="G"/>
+                                <p:checkbox id="gBox" for="qn1" itemIndex="7"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="gsharpBox" value="G#"/>
+                                <p:checkbox id="gsharpBox" for="qn1" itemIndex="8"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="aBox" value="A"/>
+                                <p:checkbox id="aBox" for="qn1" itemIndex="9"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="asharpBox" value="A#"/>
+                                <p:checkbox id="asharpBox" for="qn1" itemIndex="10"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="bBox" value="B"/>
+                                <p:checkbox id="bBox" for="qn1" itemIndex="11"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="hicBox" value="c"/>
+                                <p:checkbox id="hicBox" for="qn1" itemIndex="12"/>
+                            </div>
+                        </div>
+                    </p:outputPanel>
+                    
+                    <p:outputPanel id="customPanel">
+                        <p:selectManyCheckbox id="qn2" layout="custom"> <!--dont forget value attribute - must be a collection/array-->
+                            <f:selectItem itemLabel="C" itemValue="nothingYet"/>
+                            <f:selectItem itemLabel="C#" itemValue="Will be note values to send to EventMaker"/>
+                            <f:selectItem itemLabel="D" itemValue="See above"/>
+                            <f:selectItem itemLabel="D#" itemValue=""/>
+                            <f:selectItem itemLabel="E" itemValue="5"/>
+                            <f:selectItem itemLabel="F" itemValue=""/>
+                            <f:selectItem itemLabel="F#" itemValue=""/>
+                            <f:selectItem itemLabel="G" itemValue=""/>
+                            <f:selectItem itemLabel="G#" itemValue=""/>
+                            <f:selectItem itemLabel="A" itemValue=""/>
+                            <f:selectItem itemLabel="A#" itemValue=""/>
+                            <f:selectItem itemLabel="B" itemValue=""/>
+                            <f:selectItem itemLabel="HiC" itemValue=""/>
+                        </p:selectManyCheckbox>
+
+                        <div class="p-grid p-text-center">
+                            <div class="p-col">
+                                <p:outputLabel for="cBox" value="C" rendered="false"/>
+                                <p:checkbox id="cBox" for="qn2" itemIndex="0"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="csharpBox" value="C#" rendered="false"/>
+                                <p:checkbox id="csharpBox" for="qn2" itemIndex="1"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="dBox" value="D" rendered="false"/>
+                                <p:checkbox id="dBox" for="qn2" itemIndex="2"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="dsharpBox" value="D#" rendered="false"/>
+                                <p:checkbox id="dsharpBox" for="qn2" itemIndex="3"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="eBox" value="E" rendered="false"/>
+                                <p:checkbox id="eBox" for="qn2" itemIndex="4"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="fBox" value="F" rendered="false"/>
+                                <p:checkbox id="fBox" for="qn2" itemIndex="5"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="fsharpBox" value="F#" rendered="false"/>
+                                <p:checkbox id="fsharpBox" for="qn2" itemIndex="6"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="gBox" value="G" rendered="false"/>
+                                <p:checkbox id="gBox" for="qn2" itemIndex="7"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="gsharpBox" value="G#" rendered="false"/>
+                                <p:checkbox id="gsharpBox" for="qn2" itemIndex="8"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="aBox" value="A" rendered="false"/>
+                                <p:checkbox id="aBox" for="qn2" itemIndex="9"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="asharpBox" value="A#" rendered="false"/>
+                                <p:checkbox id="asharpBox" for="qn2" itemIndex="10"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="bBox" value="B" rendered="false"/>
+                                <p:checkbox id="bBox" for="qn2" itemIndex="11"/>
+                            </div>
+                            <div class="p-col">
+                                <p:outputLabel for="hicBox" value="c" rendered="false"/>
+                                <p:checkbox id="hicBox" for="qn2" itemIndex="12"/>
+                            </div>
+                        </div>
+                    </p:outputPanel>
+                    
+ <!--                   <p:outputPanel id="customPanel">
+                        <p:selectManyCheckbox id="custom" value="#{checkboxView.selectedOptions2}" layout="custom">
+                            <f:selectItem itemLabel="Option 1" itemValue="Option 1"/>
+                            <f:selectItem itemLabel="Option 2" itemValue="Option 2"/>
+                            <f:selectItem itemLabel="Option 3" itemValue="Option 3"/>
+                        </p:selectManyCheckbox>
+
+                        <div class="p-grid p-text-center">
+                            <div class="p-col">
+                                <p:outputLabel for="opt1" value="Option 1" styleClass="p-d-block p-mb-2"/>
+                                <p:checkbox id="opt1" for="custom" itemIndex="0"/>
+                            </div>
+
+                            <div class="p-col">
+                                <p:outputLabel for="opt2" value="Option 2" styleClass="p-d-block p-mb-2"/>
+                                <p:checkbox id="opt2" for="custom" itemIndex="1"/>
+                            </div>
+
+                            <div class="p-col">
+                                <p:outputLabel for="opt3" value="Option 3" styleClass="p-d-block p-mb-2"/>
+                                <p:checkbox id="opt3" for="custom" itemIndex="2"/>
+                            </div>
+                        </div>
+                    </p:outputPanel> -->
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Tab Two"></p:tab>
+            <p:tab title="Tab Three"></p:tab>
+        </p:tabView>
+    </h:head>
     
 </ui:composition>
