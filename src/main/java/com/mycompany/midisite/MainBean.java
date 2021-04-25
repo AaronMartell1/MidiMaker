@@ -8,6 +8,7 @@ package com.mycompany.midisite;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -18,15 +19,33 @@ import java.io.Serializable;
 public class MainBean implements Serializable {
 
     private String name = "Aaron";
+    private CheckBoxes cb;
+    
+    @PostConstruct
+    public void init(){
+        
+        getCb().setNotes(null);
+        getCb().setNotes(new int[]{60,61,62,63,64,65,66,67,68,69,70,71,72});
+        getCb().setStatus(null);
+    }
+    
+    public void buttonPress(){
+        
+        
+    }
+    
+    
+    
+    
     
     /**
      * Creates a new instance of MainBean
      */
-    public MainBean() {
+/*    public MainBean() {
         
-        
+      Dunno if this is needed  
     }
-
+*/
     /**
      * @return the name
      */
@@ -39,6 +58,20 @@ public class MainBean implements Serializable {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * @return the cb
+     */
+    public CheckBoxes getCb() {
+        return cb;
+    }
+
+    /**
+     * @param cb the cb to set
+     */
+    public void setCb(CheckBoxes cb) {
+        this.cb = cb;
     }
     
 }
