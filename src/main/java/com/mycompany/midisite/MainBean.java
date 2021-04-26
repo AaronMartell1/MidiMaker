@@ -8,6 +8,8 @@ package com.mycompany.midisite;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 
 /**
@@ -20,13 +22,27 @@ public class MainBean implements Serializable {
 
     private String name = "Aaron";
     private CheckBoxes cb;
+    private List<String> notes = new ArrayList(13);
+    private List<String> selcNotes = new ArrayList(13);
+    
     
     @PostConstruct
     public void init(){
         
-        getCb().setNotes(null);
-        getCb().setNotes(new int[]{60,61,62,63,64,65,66,67,68,69,70,71,72});
-        getCb().setStatus(null);
+        getNotes().add("60"); //C
+        getNotes().add("61"); //C#
+        getNotes().add("62"); //D
+        getNotes().add("63"); //D#
+        getNotes().add("64"); //E
+        getNotes().add("65"); //F
+        getNotes().add("66"); //F#
+        getNotes().add("67"); //G
+        getNotes().add("68"); //G#
+        getNotes().add("69"); //A
+        getNotes().add("70"); //A#
+        getNotes().add("71"); //B
+        getNotes().add("72"); //c
+        
     }
     
     public void buttonPress(){
@@ -35,7 +51,10 @@ public class MainBean implements Serializable {
     }
     
     
-    
+    public void submit(){
+        name = "-->" + selcNotes;
+        
+    }
     
     
     /**
@@ -61,17 +80,31 @@ public class MainBean implements Serializable {
     }
 
     /**
-     * @return the cb
+     * @return the notes
      */
-    public CheckBoxes getCb() {
-        return cb;
+    public List<String> getNotes() {
+        return notes;
     }
 
     /**
-     * @param cb the cb to set
+     * @param notes the notes to set
      */
-    public void setCb(CheckBoxes cb) {
-        this.cb = cb;
+    public void setNotes(List<String> notes) {
+        this.notes = notes;
     }
-    
+
+    /**
+     * @return the selcNotes
+     */
+    public List<String> getSelcNotes() {
+        return selcNotes;
+    }
+
+    /**
+     * @param selcNotes the selcNotes to set
+     */
+    public void setSelcNotes(List<String> selcNotes) {
+        this.selcNotes = selcNotes;
+    }
+
 }

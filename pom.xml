@@ -16,6 +16,15 @@
         <jakartaee>8.0</jakartaee>
     </properties>
     
+    <repositories>
+        <repository>
+            <id>prime-repo</id>
+            <name>Prime Maven Repository</name>
+            <url>http://repository.primefaces.org</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+    
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
@@ -33,6 +42,12 @@
            <artifactId>primefaces</artifactId>
             <version>8.0</version>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.0</version>
+            <scope>provided</scope>
+        </dependency>  
     </dependencies>
     
      <build>

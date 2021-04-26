@@ -161,11 +161,18 @@
                     </p:outputPanel>
                     
                 </h:panelGrid>
-                <p:commandButton update/>
+              
             </p:tab>
             <p:tab title="Tab Two"></p:tab>
             <p:tab title="Tab Three"></p:tab>
         </p:tabView>
+        <h:form>
+            <p:inputText value="#{mainBean.name}"></p:inputText>
+            
+            <p:commandButton update="t"></p:commandButton>
+        
+            <p:outputLabel value="#{mainBean.name}" id="t"></p:outputLabel>
+        </h:form>
     </h:head>
     
 </ui:composition>
