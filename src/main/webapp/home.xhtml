@@ -9,13 +9,20 @@
     <h:head>
         <p:tabView>
             <p:tab title="Piano">
-                <!-- *********************************vvvvRIGHT HEREvvvv******************************************-->
-                <p:selectManyCheckbox value="#{mainBean.quarterNotes.getStatus()}" layout="pageDirection" columns="1">
-                    <!-- Ideally would be something like #{mainBean.quarterNotes[0].status} or something-->
-                    <!-- ************************************************************^^^status is an ArrayList ************-->
-                        <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
-                </p:selectManyCheckbox>
-               
+                <h:panelGrid columns="16">
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[0].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[1].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[2].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[3].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                </h:panelGrid>
             </p:tab>
         </p:tabView>
     </h:head>    
@@ -26,11 +33,14 @@
 
         
            
-            <p:commandButton update="ee" action="#{mainBean.submit()}"></p:commandButton>
-            <p:outputLabel value="#{mainBean.name}" id="ee"></p:outputLabel>
-           
-            
-       
+        <p:commandButton update="ff, gg, hh, ii" action="#{mainBean.qnSubmit()}"></p:commandButton>
+            <p:outputLabel value="#{mainBean.test0}" id="ff"></p:outputLabel>
+            <br/>
+            <p:outputLabel value="#{mainBean.test1}" id="gg"></p:outputLabel>
+            <br/>
+            <p:outputLabel value="#{mainBean.test2}" id="hh"></p:outputLabel>
+            <br/>
+            <p:outputLabel value="#{mainBean.test3}" id="ii"></p:outputLabel>
         
     </h:body>
     </h:form>

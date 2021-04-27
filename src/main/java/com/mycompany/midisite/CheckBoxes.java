@@ -14,9 +14,11 @@ import java.util.List;
  * @author aaron
  */
 public class CheckBoxes {
-    
+    private int index;
     private List<String> status = new ArrayList(13);
 
+
+  
     /**
      * @return the status
      */
@@ -29,6 +31,20 @@ public class CheckBoxes {
      */
     public void setStatus(List<String> status) {
         this.status = status;
+    }
+
+    /**
+     * @return the index
+     */
+    public int getIndex() {
+        return index;
+    }
+
+    /**
+     * @param index the index to set
+     */
+    public void setIndex(int index) {
+        this.index = index;
     }
     
 
