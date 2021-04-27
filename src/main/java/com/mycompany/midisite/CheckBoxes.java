@@ -5,7 +5,8 @@
  */
 package com.mycompany.midisite;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -14,43 +15,29 @@ package com.mycompany.midisite;
  */
 public class CheckBoxes {
     
-    private int notes[] = new int[13];
-    private boolean[] status = new boolean[13];
+    private List<String> status = new ArrayList(13);
 
-    
-    
-    
-    
-    
-    
-    /**
-     * @return the notes
-     */
-    public int getNotes(int i) {
-        return notes[i];
-    }
-
-    /**
-     * @param notes the notes to set
-     */
-    public void setNotes(int[] notes) {
-        this.notes = notes;
-    }
-    
     /**
      * @return the status
      */
-    public boolean getStatus(int i) {
-        return status[i];
+    public List<String> getStatus() {
+        return status;
     }
 
     /**
      * @param status the status to set
      */
-    public void setStatus(boolean[] status) {
+    public void setStatus(List<String> status) {
         this.status = status;
     }
     
+
     
+    
+    
+    
+    
+    
+
     
 }

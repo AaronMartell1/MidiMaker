@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <h:form>
+    <h:head>
+        <p:tabView>
+            <p:tab title="Piano">
+                <!-- *********************************vvvvRIGHT HEREvvvv******************************************-->
+                <p:selectManyCheckbox value="#{mainBean.quarterNotes.getStatus()}" layout="pageDirection" columns="1">
+                    <!-- Ideally would be something like #{mainBean.quarterNotes[0].status} or something-->
+                    <!-- ************************************************************^^^status is an ArrayList ************-->
+                        <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                </p:selectManyCheckbox>
+               
+            </p:tab>
+        </p:tabView>
+    </h:head>    
+        
+    <h:body>
+        
+        
+
+        
+           
+            <p:commandButton update="ee" action="#{mainBean.submit()}"></p:commandButton>
+            <p:outputLabel value="#{mainBean.name}" id="ee"></p:outputLabel>
+           
+            
+       
+        
+    </h:body>
+    </h:form>
+</ui:composition>

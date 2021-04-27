@@ -21,7 +21,7 @@ import javax.annotation.PostConstruct;
 public class MainBean implements Serializable {
 
     private String name = "Aaron";
-    private CheckBoxes cb;
+    private List<CheckBoxes> quarterNotes = new ArrayList(50);
     private List<String> notes = new ArrayList(13);
     private List<String> selcNotes = new ArrayList(13);
     
@@ -52,7 +52,7 @@ public class MainBean implements Serializable {
     
     
     public void submit(){
-        name = "-->" + selcNotes;
+        name = "-->" + this.quarterNotes.get(0).getStatus();
         
     }
     
@@ -106,5 +106,21 @@ public class MainBean implements Serializable {
     public void setSelcNotes(List<String> selcNotes) {
         this.selcNotes = selcNotes;
     }
+
+    /**
+     * @return the quarterNotes
+     */
+    public List<CheckBoxes> getQuarterNotes() {
+        return quarterNotes;
+    }
+
+    /**
+     * @param quarterNotes the quarterNotes to set
+     */
+    public void setQuarterNotes(List<CheckBoxes> quarterNotes) {
+        this.quarterNotes = quarterNotes;
+    }
+
+ 
 
 }
