@@ -5,6 +5,7 @@
  */
 package com.mycompany.midisite;
 
+import java.util.List;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.Sequence;
 import javax.sound.midi.Sequencer;
@@ -16,25 +17,28 @@ import javax.sound.midi.Track;
  */
 public class MidiPlayer {
     
-    public void PlayerSetup(){
+    private Sequence seq;
+    private Track trk;
+    private Sequencer seqr;
+    
+    public MidiPlayer(){
         try{
-            Sequencer seqr = MidiSystem.getSequencer();
+            seqr = MidiSystem.getSequencer();
             seqr.open();
             
-            Sequence seq = new Sequence(Sequence.PPQ, 4);
+            seq = new Sequence(Sequence.PPQ, 4);
             
-            Track trk = seq.createTrack();
+            trk = seq.createTrack();
             
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }    
+    }
+    
+    public void playMidi(){
+        
+        try {
             
-/*            for( int i = 5; i < (4*numoNotes) + 5; i += 4){
-                
-                MidiMessage mm = new MidiMessage();
-                trk.add(mm.makeEvent(144, 0, i+18, 100, i));
-                trk.add(mm.makeEvent(128, 0, i+18, 100, i+2));
-                trk.add(mm.makeEvent(144, 0, i+26, 100, i));
-                trk.add(mm.makeEvent(128, 0, i+26, 100, i+2));
-            }
-*/            
             seqr.setSequence(seq);
             
             seqr.setTempoInBPM(120);
@@ -47,14 +51,59 @@ public class MidiPlayer {
     }
     
     //Add Quarter Note, i.e. a single collumn of checkboxes
-    public void addQNote(boolean[] status, Track track){
-        for(int i=0;i<14;i++){
-            if(status[i]==true){
-               MidiMessage mm = new MidiMessage();
-               track.add(mm.makeEvent(144,1,1,1,1));
-               track.add(mm.makeEvent(144,1,1,1,1));
-            }
+    public void addQNote(List<String> status, int index){
+        
+        for(String s: status){
+            MidiMessage mm = new MidiMessage();
+            int n = Integer.valueOf(s);
+            trk.add(mm.makeEvent(144, 0, n, 100, index*4));
+            trk.add(mm.makeEvent(128, 0, n, 100, (index*4) + 4));
         }
+        
+        
+        
+    }
+
+    /**
+     * @return the seq
+     */
+    public Sequence getSeq() {
+        return seq;
+    }
+
+    /**
+     * @param seq the seq to set
+     */
+    public void setSeq(Sequence seq) {
+        this.seq = seq;
+    }
+
+    /**
+     * @return the trk
+     */
+    public Track getTrk() {
+        return trk;
+    }
+
+    /**
+     * @param trk the trk to set
+     */
+    public void setTrk(Track trk) {
+        this.trk = trk;
+    }
+
+    /**
+     * @return the seqr
+     */
+    public Sequencer getSeqr() {
+        return seqr;
+    }
+
+    /**
+     * @param seqr the seqr to set
+     */
+    public void setSeqr(Sequencer seqr) {
+        this.seqr = seqr;
     }
 }
 
