@@ -25,60 +25,73 @@ public class MainBean implements Serializable {
     private String test1 = "1";
     private String test2 = "2";
     private String test3 = "3";
-    private CheckBoxes[] quarterNotes = new CheckBoxes[50];
+    private CheckBoxes[] quarterNotes = new CheckBoxes[16];
     private List<String> notes = new ArrayList(13);
-    private List<String> tmpStatus = new ArrayList(13);
+    private List<String> noteLabels = new ArrayList(13);
+    private MidiPlayer MP;
     
     
     @PostConstruct
     public void init(){
         
         
-        getNotes().add("60"); //C
-        getNotes().add("61"); //C#
-        getNotes().add("62"); //D
-        getNotes().add("63"); //D#
-        getNotes().add("64"); //E
-        getNotes().add("65"); //F
-        getNotes().add("66"); //F#
-        getNotes().add("67"); //G
-        getNotes().add("68"); //G#
-        getNotes().add("69"); //A
-        getNotes().add("70"); //A#
-        getNotes().add("71"); //B
         getNotes().add("72"); //c
+        getNotes().add("71"); //B
+        getNotes().add("70"); //A#
+        getNotes().add("69"); //A
+        getNotes().add("68"); //G#
+        getNotes().add("67"); //G
+        getNotes().add("66"); //F#
+        getNotes().add("65"); //F
+        getNotes().add("64"); //E
+        getNotes().add("63"); //D#
+        getNotes().add("62"); //D
+        getNotes().add("61"); //C#
+        getNotes().add("60"); //C
+        
+        getNoteLabels().add("c");
+        getNoteLabels().add("B");
+        getNoteLabels().add("A#");
+        getNoteLabels().add("A");
+        getNoteLabels().add("G#");
+        getNoteLabels().add("G");
+        getNoteLabels().add("F#");
+        getNoteLabels().add("F");
+        getNoteLabels().add("E");
+        getNoteLabels().add("D#");
+        getNoteLabels().add("D");
+        getNoteLabels().add("C#");
+        getNoteLabels().add("C");
+        
         
         for(int i=0;i<quarterNotes.length;i++){
             getQuarterNotes()[i] = new CheckBoxes();
+            getQuarterNotes()[i].setIndex(i);
         }
         
-            
+        MP = new MidiPlayer();
         
     }
     
-    public void buttonPress(){
-        
-        
-    }
+
     
-    
-    public void submit(){
-        
-        
-        name = "-->" + tmpStatus;
-        
- 
-    }
+
     
     public void qnSubmit(){
-        test0 = "-0->" + getQuarterNotes()[0].getStatus();
-        test1 = "-1->" + getQuarterNotes()[1].getStatus();
+        test0 = "-0->" + getQuarterNotes()[0].getStatus() + getQuarterNotes()[0].getIndex();
+        test1 = "-1->" + getQuarterNotes()[1].getStatus() + getQuarterNotes()[1].getIndex();
         test2 = "-2->" + getQuarterNotes()[2].getStatus();
         test3 = "-3->" + getQuarterNotes()[3].getStatus();
     }
     
-   
-    
+ 
+    public void compileTrack(){
+        for(int i=0;i<getQuarterNotes().length; i++){
+            MP.addQNote(getQuarterNotes()[i].getStatus(), getQuarterNotes()[i].getIndex());
+            test3 = test3 + getQuarterNotes()[i].getStatus();
+        }
+        
+    }
   
     
     /**
@@ -118,20 +131,6 @@ public class MainBean implements Serializable {
      */
     public void setNotes(List<String> notes) {
         this.notes = notes;
-    }
-
-    /**
-     * @return the tmpStatus
-     */
-    public List<String> getTmpStatus() {
-        return tmpStatus;
-    }
-
-    /**
-     * @param tmpStatus the tmpStatus to set
-     */
-    public void setTmpStatus(List<String> tmpStatus) {
-        this.tmpStatus = tmpStatus;
     }
 
 
@@ -203,6 +202,34 @@ public class MainBean implements Serializable {
      */
     public void setTest3(String test3) {
         this.test3 = test3;
+    }
+
+    /**
+     * @return the MP
+     */
+    public MidiPlayer getMP() {
+        return MP;
+    }
+
+    /**
+     * @param MP the MP to set
+     */
+    public void setMP(MidiPlayer MP) {
+        this.MP = MP;
+    }
+
+    /**
+     * @return the noteLabels
+     */
+    public List<String> getNoteLabels() {
+        return noteLabels;
+    }
+
+    /**
+     * @param noteLabels the noteLabels to set
+     */
+    public void setNoteLabels(List<String> noteLabels) {
+        this.noteLabels = noteLabels;
     }
 
  

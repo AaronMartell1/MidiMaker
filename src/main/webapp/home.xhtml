@@ -7,11 +7,13 @@
                 xmlns:p="http://primefaces.org/ui">
     <h:form>
     <h:head>
+        
         <p:tabView>
             <p:tab title="Piano">
-                <h:panelGrid columns="16">
+                <h:panelGrid columns="17">
                     <p:selectManyCheckbox value="#{mainBean.quarterNotes[0].status}" layout="pageDirection" columns="1">
-                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                        <f:selectItems value="#{mainBean.notes}"  itemLabel="#{mainBean.noteLabels}"></f:selectItems>
+                            
                     </p:selectManyCheckbox>
                     <p:selectManyCheckbox value="#{mainBean.quarterNotes[1].status}" layout="pageDirection" columns="1">
                             <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
@@ -22,6 +24,43 @@
                     <p:selectManyCheckbox value="#{mainBean.quarterNotes[3].status}" layout="pageDirection" columns="1">
                             <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
                     </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[4].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[5].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[6].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[7].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[8].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[9].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[10].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[11].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[12].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[13].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[14].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    <p:selectManyCheckbox value="#{mainBean.quarterNotes[15].status}" layout="pageDirection" columns="1">
+                            <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
+                    </p:selectManyCheckbox>
+                    
                 </h:panelGrid>
             </p:tab>
         </p:tabView>
@@ -34,6 +73,8 @@
         
            
         <p:commandButton update="ff, gg, hh, ii" action="#{mainBean.qnSubmit()}"></p:commandButton>
+        <p:commandButton value="add notes" update="ii" action="#{mainBean.compileTrack()}"></p:commandButton>
+        <p:commandButton value="play" action="#{mainBean.MP.playMidi()}"></p:commandButton>
             <p:outputLabel value="#{mainBean.test0}" id="ff"></p:outputLabel>
             <br/>
             <p:outputLabel value="#{mainBean.test1}" id="gg"></p:outputLabel>
@@ -41,6 +82,7 @@
             <p:outputLabel value="#{mainBean.test2}" id="hh"></p:outputLabel>
             <br/>
             <p:outputLabel value="#{mainBean.test3}" id="ii"></p:outputLabel>
+            
         
     </h:body>
     </h:form>

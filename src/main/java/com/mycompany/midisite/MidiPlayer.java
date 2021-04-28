@@ -21,6 +21,8 @@ public class MidiPlayer {
     private Track trk;
     private Sequencer seqr;
     
+    
+    //Constructor initializes the MIDI sequencer, a sequence, and a track on that sequence
     public MidiPlayer(){
         try{
             seqr = MidiSystem.getSequencer();
@@ -35,16 +37,17 @@ public class MidiPlayer {
         }    
     }
     
+    //Method to play the created MIDI sequence
     public void playMidi(){
         
         try {
-            
             seqr.setSequence(seq);
             
             seqr.setTempoInBPM(120);
             
             seqr.start();
             
+            seqr.setTickPosition(0);
         } catch(Exception ex){
             ex.printStackTrace();
         }

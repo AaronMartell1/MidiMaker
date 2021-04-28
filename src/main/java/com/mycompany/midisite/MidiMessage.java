@@ -15,7 +15,13 @@ import javax.sound.midi.ShortMessage;
 public class MidiMessage {
     private int command, pitch, volume, channel, tick;
     
-    
+    public MidiMessage(){
+        command =0;
+        pitch=0;
+        volume=0; 
+        channel=0; 
+        tick=0;
+    }
         
     public MidiEvent makeEvent(int command, int channel, int pitch, int volume, int tick){
         
