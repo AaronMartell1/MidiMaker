@@ -1,0 +1,17 @@
+/* 
+    Created on : Apr. 28, 2021, 5:32:31 p.m.
+    Author     : aaron
+*/
+
+.ui-selectmanycheckbox label {
+  float: left;
+  text-align: left;
+  width: 15px;
+}
+
+.grid table {
+    
+    width: 16px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}

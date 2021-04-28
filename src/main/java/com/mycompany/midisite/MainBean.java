@@ -9,7 +9,9 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 
 /**
@@ -29,10 +31,26 @@ public class MainBean implements Serializable {
     private List<String> notes = new ArrayList(13);
     private List<String> noteLabels = new ArrayList(13);
     private MidiPlayer MP;
+    private Map<String, String> notess = new LinkedHashMap<>(13);
     
     
     @PostConstruct
     public void init(){
+        
+        
+        getNotess().put("c", "72");
+        getNotess().put("B", "71");
+        getNotess().put("A#", "70");
+        getNotess().put("A", "69");
+        getNotess().put("G#", "68");
+        getNotess().put("G", "67");
+        getNotess().put("F#", "66");
+        getNotess().put("F", "65");
+        getNotess().put("E", "64");
+        getNotess().put("D#", "63");
+        getNotess().put("D", "62");
+        getNotess().put("C#", "61");
+        getNotess().put("C", "60");
         
         
         getNotes().add("72"); //c
@@ -230,6 +248,20 @@ public class MainBean implements Serializable {
      */
     public void setNoteLabels(List<String> noteLabels) {
         this.noteLabels = noteLabels;
+    }
+
+    /**
+     * @return the notess
+     */
+    public Map<String, String> getNotess() {
+        return notess;
+    }
+
+    /**
+     * @param notess the notess to set
+     */
+    public void setNotess(Map<String, String> notess) {
+        this.notess = notess;
     }
 
  

@@ -7,14 +7,15 @@
                 xmlns:p="http://primefaces.org/ui">
     <h:form>
     <h:head>
-        
+        <link href="./MidiCSS.css" rel="stylesheet" type="text/css"></link>
         <p:tabView>
             <p:tab title="Piano">
                 <h:panelGrid columns="17">
                     <p:selectManyCheckbox value="#{mainBean.quarterNotes[0].status}" layout="pageDirection" columns="1">
-                        <f:selectItems value="#{mainBean.notes}"  itemLabel="#{mainBean.noteLabels}"></f:selectItems>
-                            
+                        <f:selectItems value="#{mainBean.notess}"></f:selectItems>
                     </p:selectManyCheckbox>
+                    
+                    <div  styleClass="grid">   
                     <p:selectManyCheckbox value="#{mainBean.quarterNotes[1].status}" layout="pageDirection" columns="1">
                             <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
                     </p:selectManyCheckbox>
@@ -60,7 +61,7 @@
                     <p:selectManyCheckbox value="#{mainBean.quarterNotes[15].status}" layout="pageDirection" columns="1">
                             <f:selectItems value="#{mainBean.notes}" itemLabel="" ></f:selectItems>
                     </p:selectManyCheckbox>
-                    
+                </div> 
                 </h:panelGrid>
             </p:tab>
         </p:tabView>
