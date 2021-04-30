@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.midisite;
 
 import javax.sound.midi.MidiEvent;
@@ -12,9 +8,12 @@ import javax.sound.midi.ShortMessage;
  *
  * @author aaron
  */
+
+//MidiMessage class for easily handeling MidiEvents (MidiEvents are responsible for adding notes to a Midi Track)
 public class MidiMessage {
     private int command, pitch, volume, channel, tick;
     
+    //Constructor
     public MidiMessage(){
         command =0;
         pitch=0;
@@ -23,6 +22,7 @@ public class MidiMessage {
         tick=0;
     }
         
+    //Method to handle MidiEvents, combines MIDI ShortMessage with MidiEvent
     public MidiEvent makeEvent(int command, int channel, int pitch, int volume, int tick){
         
         MidiEvent ME = null;

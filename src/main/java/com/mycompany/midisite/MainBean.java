@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.midisite;
 
 import javax.inject.Named;
@@ -23,36 +19,34 @@ import javax.annotation.PostConstruct;
 public class MainBean implements Serializable {
 
     private String name = "Aaron";
-    private String test0 = "0";
-    private String test1 = "1";
-    private String test2 = "2";
-    private String test3 = "3";
-    private CheckBoxes[] quarterNotes = new CheckBoxes[16];
+
+    private CheckBoxes[] quarterNotes = new CheckBoxes[32];
     private List<String> notes = new ArrayList(13);
-    private List<String> noteLabels = new ArrayList(13);
     private MidiPlayer MP;
-    private Map<String, String> notess = new LinkedHashMap<>(13);
+    private Map<String, String> notesandLabels = new LinkedHashMap<>(13);
+    private float tempo;
     
     
     @PostConstruct
     public void init(){
         
+        //Initializing String Map for the first, left-most column of checkboxes
+        //Provides the note value for each box in the column and provides a label for each row
+        getNotesandLabels().put("c", "72");
+        getNotesandLabels().put("B", "71");
+        getNotesandLabels().put("A#", "70");
+        getNotesandLabels().put("A", "69");
+        getNotesandLabels().put("G#", "68");
+        getNotesandLabels().put("G", "67");
+        getNotesandLabels().put("F#", "66");
+        getNotesandLabels().put("F", "65");
+        getNotesandLabels().put("E", "64");
+        getNotesandLabels().put("D#", "63");
+        getNotesandLabels().put("D", "62");
+        getNotesandLabels().put("C#", "61");
+        getNotesandLabels().put("C", "60");
         
-        getNotess().put("c", "72");
-        getNotess().put("B", "71");
-        getNotess().put("A#", "70");
-        getNotess().put("A", "69");
-        getNotess().put("G#", "68");
-        getNotess().put("G", "67");
-        getNotess().put("F#", "66");
-        getNotess().put("F", "65");
-        getNotess().put("E", "64");
-        getNotess().put("D#", "63");
-        getNotess().put("D", "62");
-        getNotess().put("C#", "61");
-        getNotess().put("C", "60");
-        
-        
+        //Initializing List of pitch values used as value in each column of checkboxes
         getNotes().add("72"); //c
         getNotes().add("71"); //B
         getNotes().add("70"); //A#
@@ -67,61 +61,29 @@ public class MainBean implements Serializable {
         getNotes().add("61"); //C#
         getNotes().add("60"); //C
         
-        getNoteLabels().add("c");
-        getNoteLabels().add("B");
-        getNoteLabels().add("A#");
-        getNoteLabels().add("A");
-        getNoteLabels().add("G#");
-        getNoteLabels().add("G");
-        getNoteLabels().add("F#");
-        getNoteLabels().add("F");
-        getNoteLabels().add("E");
-        getNoteLabels().add("D#");
-        getNoteLabels().add("D");
-        getNoteLabels().add("C#");
-        getNoteLabels().add("C");
+        //Initialize tempo
+        tempo = 1;
         
-        
+        //Initializing an instance of the CheckBoxes class, holds the selected pitch values 
         for(int i=0;i<quarterNotes.length;i++){
             getQuarterNotes()[i] = new CheckBoxes();
             getQuarterNotes()[i].setIndex(i);
         }
         
+        //Initializing an instance of a MidiPlayer class
         MP = new MidiPlayer();
         
-    }
-    
-
-    
-
-    
-    public void qnSubmit(){
-        test0 = "-0->" + getQuarterNotes()[0].getStatus() + getQuarterNotes()[0].getIndex();
-        test1 = "-1->" + getQuarterNotes()[1].getStatus() + getQuarterNotes()[1].getIndex();
-        test2 = "-2->" + getQuarterNotes()[2].getStatus();
-        test3 = "-3->" + getQuarterNotes()[3].getStatus();
     }
     
  
     public void compileTrack(){
         for(int i=0;i<getQuarterNotes().length; i++){
             MP.addQNote(getQuarterNotes()[i].getStatus(), getQuarterNotes()[i].getIndex());
-            test3 = test3 + getQuarterNotes()[i].getStatus();
+            
         }
         
+        MP.playMidi(tempo);
     }
-  
-    
-    /**
-     * Creates a new instance of MainBean
-     */
-/*    public MainBean() {
-        
-      Dunno if this is needed  
-    }
-*/
-    
-  
     
     /**
      * @return the name
@@ -151,21 +113,6 @@ public class MainBean implements Serializable {
         this.notes = notes;
     }
 
-
-    /**
-     * @return the test0
-     */
-    public String getTest0() {
-        return test0;
-    }
-
-    /**
-     * @param test0 the test0 to set
-     */
-    public void setTest0(String test0) {
-        this.test0 = test0;
-    }
-
     /**
      * @return the quarterNotes
      */
@@ -178,48 +125,6 @@ public class MainBean implements Serializable {
      */
     public void setQuarterNotes(CheckBoxes[] quarterNotes) {
         this.quarterNotes = quarterNotes;
-    }
-
-    /**
-     * @return the test1
-     */
-    public String getTest1() {
-        return test1;
-    }
-
-    /**
-     * @param test1 the test1 to set
-     */
-    public void setTest1(String test1) {
-        this.test1 = test1;
-    }
-
-    /**
-     * @return the test2
-     */
-    public String getTest2() {
-        return test2;
-    }
-
-    /**
-     * @param test2 the test2 to set
-     */
-    public void setTest2(String test2) {
-        this.test2 = test2;
-    }
-
-    /**
-     * @return the test3
-     */
-    public String getTest3() {
-        return test3;
-    }
-
-    /**
-     * @param test3 the test3 to set
-     */
-    public void setTest3(String test3) {
-        this.test3 = test3;
     }
 
     /**
@@ -236,36 +141,33 @@ public class MainBean implements Serializable {
         this.MP = MP;
     }
 
+
     /**
-     * @return the noteLabels
+     * @return the notesandLabels
      */
-    public List<String> getNoteLabels() {
-        return noteLabels;
+    public Map<String, String> getNotesandLabels() {
+        return notesandLabels;
     }
 
     /**
-     * @param noteLabels the noteLabels to set
+     * @param notesandLabels the notesandLabels to set
      */
-    public void setNoteLabels(List<String> noteLabels) {
-        this.noteLabels = noteLabels;
+    public void setNotesandLabels(Map<String, String> notesandLabels) {
+        this.notesandLabels = notesandLabels;
     }
 
     /**
-     * @return the notess
+     * @return the tempo
      */
-    public Map<String, String> getNotess() {
-        return notess;
+    public float getTempo() {
+        return tempo;
     }
 
     /**
-     * @param notess the notess to set
+     * @param tempo the tempo to set
      */
-    public void setNotess(Map<String, String> notess) {
-        this.notess = notess;
+    public void setTempo(float tempo) {
+        this.tempo = tempo;
     }
-
- 
-  
- 
 
 }

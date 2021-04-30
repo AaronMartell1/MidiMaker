@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.midisite;
 
 import java.util.List;
@@ -15,13 +11,15 @@ import javax.sound.midi.Track;
  *
  * @author aaron
  */
+
+//MidiPlayer class responsible for Midi components and realted functions
 public class MidiPlayer {
     
     private Sequence seq;
     private Track trk;
     private Sequencer seqr;
-    
-    
+   
+
     //Constructor initializes the MIDI sequencer, a sequence, and a track on that sequence
     public MidiPlayer(){
         try{
@@ -32,26 +30,28 @@ public class MidiPlayer {
             
             trk = seq.createTrack();
             
+            
         } catch(Exception ex){
             ex.printStackTrace();
         }    
     }
     
-    //Method to play the created MIDI sequence
-    public void playMidi(){
-        
-        try {
-            seqr.setSequence(seq);
-            
+    //Method to play the created MIDI sequence, sets tempo factor (default tempo is 120 beats per minute, tempo factor is multiplier of that BPM)
+    public void playMidi(float tempo){
+                 
+        try {       
             seqr.setTempoInBPM(120);
+            seqr.setTempoFactor(tempo);
             
+            seqr.setSequence(seq);
+            seqr.setTickPosition(0);
             seqr.start();
             
-            seqr.setTickPosition(0);
         } catch(Exception ex){
             ex.printStackTrace();
         }
     }
+    
     
     //Add Quarter Note, i.e. a single collumn of checkboxes
     public void addQNote(List<String> status, int index){
@@ -61,12 +61,11 @@ public class MidiPlayer {
             int n = Integer.valueOf(s);
             trk.add(mm.makeEvent(144, 0, n, 100, index*4));
             trk.add(mm.makeEvent(128, 0, n, 100, (index*4) + 4));
+            
         }
-        
-        
-        
     }
 
+  
     /**
      * @return the seq
      */
@@ -108,5 +107,6 @@ public class MidiPlayer {
     public void setSeqr(Sequencer seqr) {
         this.seqr = seqr;
     }
+
 }
 
