@@ -83,6 +83,7 @@ public class MainBean implements Serializable {
         }
         
         MP.playMidi(tempo);
+        MP.clearTrack();
     }
     
     /**

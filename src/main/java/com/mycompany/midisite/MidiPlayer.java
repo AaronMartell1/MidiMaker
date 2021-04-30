@@ -64,7 +64,13 @@ public class MidiPlayer {
             
         }
     }
-
+    
+    //Deletes and reinitializes the track (clears all events, or notes, from track)
+    public void clearTrack(){
+        
+        seq.deleteTrack(trk);
+        trk = seq.createTrack();
+    }
   
     /**
      * @return the seq
